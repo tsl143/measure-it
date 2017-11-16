@@ -1,3 +1,6 @@
+let xMargin=0;
+let yMargin=0;
+let dragIt = false;
 (function(){
   let x1 = 0;
   let x2 = 0;
@@ -21,16 +24,15 @@
 
     initializeSelector(){
       manipulators.selector.setAttribute("id", 'tslSelector');
+      
       manipulators.selector.style.cssText=`
         background: rgba(255,255,0,0.3);
         border: 1px dashed #444;
         position: absolute;
         z-index: 9999;
       `;
-      manipulators.overlay.appendChild(manipulators.selector);
-      manipulators.selector.addEventListener('mousedown',manipulators.mDown,false);
+      document.body.appendChild(manipulators.selector);
       manipulators.selector.addEventListener('mouseup',manipulators.mUp,false);
-      manipulators.selector.addEventListener('mousemove',manipulators.mMove,false);
     },
 
     initializeOverlay: () => {
@@ -77,6 +79,7 @@
 
     destroy: () => {
       manipulators.overlay.remove();
+      manipulators.selector.remove();
     },
 
     drawSelector: () => {
@@ -113,10 +116,24 @@
       x1 = e.clientX;
       y1 = e.clientY;
       manipulators.drawSelector();
+      manipulators.selector.removeAttribute("draggable");
+      manipulators.selector.removeAttribute("ondragstart");
+      manipulators.overlay.removeAttribute("ondrop");
+      manipulators.overlay.removeAttribute("ondragover");
     },
 
     mUp: (e) => {
+      
+      if(!dragIt){
+        manipulators.selector.setAttribute("draggable", true);
+        manipulators.selector.setAttribute("ondragstart", "drag(event)");
+        manipulators.overlay.setAttribute("ondrop", 'drop(event)');
+        manipulators.overlay.setAttribute("ondragover", 'allowDrop(event)');
+        manipulators.selector.setAttribute("ondrop", 'drop(event)');
+        manipulators.selector.setAttribute("ondragover", 'allowDrop(event)');
+      }
       drawIt = false;
+      
     },
 
     mMove: (e) => {
@@ -144,3 +161,19 @@
 
   letsGo();
 })();
+
+const allowDrop = (ev) => {
+    ev.preventDefault();
+}
+
+const drag = ev => {
+  dragIt = true;
+  xMargin = ev.layerX;
+  yMargin = ev.layerY;
+}
+
+const drop = ev => {
+  dragIt = false;
+  document.getElementById('tslSelector').style.left = (ev.clientX - xMargin) + 'px';
+  document.getElementById('tslSelector').style.top = (ev.clientY - yMargin) + 'px';
+}
