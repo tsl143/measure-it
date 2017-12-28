@@ -62,6 +62,7 @@
         font-family: Arial !important;
         background: #fff;
         left: -33px;
+        color: black;
       `;
       manipulators.upperLabel.style.cssText=`
         position: absolute;
@@ -70,6 +71,7 @@
         font-family: Arial !important;
         background: #fff;
         right: 0;
+        color: black;
       `;
       manipulators.selector.appendChild(manipulators.lowerLabel);
       manipulators.selector.appendChild(manipulators.upperLabel);
