@@ -16,5 +16,13 @@
 	"background": {
 		"scripts": ["bg.js"]
 	},
-	"permissions": ["activeTab"]
+	"permissions": ["activeTab"],
+	"commands": {
+		"open-measure-it": {
+			"suggested_key": {
+				"default": "Alt+Shift+M"
+			},
+			"description": "Open MeasureIt"
+		}
+	}
 }
