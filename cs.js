@@ -63,16 +63,18 @@
         color: black !important;
         line-height: 16px;
         padding: 0 2px;
+        min-width: 37px;
+        text-align: center;
       `;
       manipulators.lowerLabel.style.cssText=`
         ${labelStyles}
         bottom: 0;
-        left: 0;
+        left: -37px;
       `;
       manipulators.upperLabel.style.cssText=`
         ${labelStyles}
         top: 0;
-        right: 0;
+        right: -37px;
       `;
       manipulators.selector.appendChild(manipulators.lowerLabel);
       manipulators.selector.appendChild(manipulators.upperLabel);

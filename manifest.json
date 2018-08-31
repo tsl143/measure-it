@@ -20,7 +20,8 @@
 	"commands": {
 		"open-measure-it": {
 		  	"suggested_key": {
-				"default": "Alt+Shift+M"
+				"default": "Ctrl+Shift+M",
+				"mac": "Command+Shift+M"
 		  	},
 		  	"description": "Open MeasureIt"
 		}
