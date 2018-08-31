@@ -55,23 +55,24 @@
     initializeLabels: () => {
       manipulators.lowerLabel.setAttribute("id", 'tslLowerLabel');
       manipulators.upperLabel.setAttribute("id", 'tslUpperLabel');
-      manipulators.lowerLabel.style.cssText=`
+      const labelStyles = `
         position: absolute;
-        bottom: -5px;
         font-size: 12px !important;
         font-family: Arial !important;
         background: #fff;
-        left: -33px;
-        color: black;
+        color: black !important;
+        line-height: 16px;
+        padding: 0 2px;
+      `;
+      manipulators.lowerLabel.style.cssText=`
+        ${labelStyles}
+        bottom: 0;
+        left: 0;
       `;
       manipulators.upperLabel.style.cssText=`
-        position: absolute;
-        top: -16px;
-        font-size: 12px !important;
-        font-family: Arial !important;
-        background: #fff;
+        ${labelStyles}
+        top: 0;
         right: 0;
-        color: black;
       `;
       manipulators.selector.appendChild(manipulators.lowerLabel);
       manipulators.selector.appendChild(manipulators.upperLabel);
