@@ -65,6 +65,7 @@
         padding: 0 2px;
         min-width: 37px;
         text-align: center;
+        box-sizing: border-box !important;
       `;
       manipulators.lowerLabel.style.cssText=`
         ${labelStyles}
