@@ -2,7 +2,7 @@
 	"manifest_version": 2,
 	"name": "Measure-it",
 	"description": "Draw a ruler across any webpage to check the width, height, or alignment of page elements in pixels.",
-	"version": "2.0.3",
+	"version": "2.0.4",
 	"icons": {
 		"32": "icons/icon_32.png",
 		"64": "icons/icon_64.png",
@@ -20,8 +20,7 @@
 	"commands": {
 		"open-measure-it": {
 		  	"suggested_key": {
-				"default": "Ctrl+Shift+M",
-				"mac": "Command+Shift+M"
+				"default": "Alt+Shift+M"
 		  	},
 		  	"description": "Open MeasureIt"
 		}
