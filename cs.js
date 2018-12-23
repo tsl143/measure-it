@@ -5,9 +5,22 @@
   let y2 = 0;
   let drawIt = false;
 
+  const getColor = (sec, fallback) => {
+    try {
+      const preferences = JSON.parse(measureitChoices);
+      const hex = preferences[sec];
+      const opacity = preferences[`${sec}Opacity`];
+      const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+      const r = parseInt(result[1], 16);
+      const g = parseInt(result[2], 16);
+      const b = parseInt(result[3], 16);
+      return `${r}, ${g}, ${b}, ${opacity}`;
+    } catch(e) {
+      return fallback;
+    }
+  }
+
   const manipulators = {
-
-
     selector: document.createElement('div'),
     upperLabel: document.createElement('span'),
     lowerLabel: document.createElement('span'),
@@ -22,7 +35,7 @@
     initializeSelector(){
       manipulators.selector.setAttribute("id", 'tslSelector');
       manipulators.selector.style.cssText=`
-        background: rgba(255,255,0,0.3);
+        background: rgba(${getColor('popup', '255, 255, 0, 0.3')});
         border: 1px dashed #444;
         position: absolute;
         z-index: 9999;
@@ -43,7 +56,7 @@
         position: fixed;
         cursor: crosshair;
         z-index: 9998;
-        background: rgba(0,0,0,0.4);
+        background: rgba(${getColor('background', '0, 0, 0, 0.4')});
       `;
       document.body.appendChild(manipulators.overlay);
 

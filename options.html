@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style type="text/css">
+        input {
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <table id="optionTable">
+        <tr>
+            <td colspan="2"><center><h3>Choose color and opacity</h3></center></td>
+        </tr>
+        <tr>
+            <td>
+                <label>Choose overlay color</label>
+            </td>
+            <td>
+                <input type="color" id="background" /><label id="backgroundLabel">0.5</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Choose popup color</label>
+            </td>
+            <td>
+                <input type="color" id="popup" /><label id="popupLabel">0.5</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Choose background opacity</label>
+            </td>
+            <td>
+                <input type="range" min="0" max="1" step="0.1" value="0.5" id="backgroundOpacity"><label id="backgroundOpacityLabel">0.5</label>
+            </td>
+        </tr>
+        <tr>
+                <td>
+                    <label>Choose Popup opacity</label>
+                </td>
+                <td>
+                    <input type="range" min="0" max="1" step="0.1" value="0.5" id="popupOpacity"><label id="popupOpacityLabel">0.5</label>
+                </td>
+            </tr>
+    </table>
+</body>
+<script src="options.js"></script>
+
+</html>

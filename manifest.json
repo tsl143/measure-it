@@ -2,7 +2,12 @@
 	"manifest_version": 2,
 	"name": "Measure-it",
 	"description": "Draw a ruler across any webpage to check the width, height, or alignment of page elements in pixels.",
-	"version": "2.0.4",
+	"version": "2.1.0",
+	"applications": {
+		"gecko": {
+			"id": "{79b2e4de-8fb4-4ccc-b9f6-362ac2fb74b2}"
+		}
+	},
 	"icons": {
 		"32": "icons/icon_32.png",
 		"64": "icons/icon_64.png",
@@ -16,7 +21,11 @@
 	"background": {
 		"scripts": ["bg.js"]
 	},
-	"permissions": ["activeTab"],
+	"options_ui": {
+		"page": "options.html",
+		"browser_style": true
+	},
+	"permissions": ["activeTab", "storage"],
 	"commands": {
 		"open-measure-it": {
 		  	"suggested_key": {

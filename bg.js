@@ -1,16 +1,35 @@
-browser.browserAction.onClicked.addListener(tab => {
-  browser.tabs.executeScript(tab.Id, {file: 'cs.js'});
+browser.storage.local.get()
+.then((res = {}) => {
+  const {choices = {}} = res;
+  choices.background = choices.background || '#000000';
+  choices.popup = choices.popup || '#ffff00';
+  choices.popupOpacity = choices.popupOpacity || '0.3';
+  choices.backgroundOpacity = choices.backgroundOpacity || '0.4';
+  browser.storage.local.set({choices});
+});
+
+const execCs = tabId => {
+  browser.storage.local.get()
+  .then((res = {}) => {
+    const {choices} = res;
+    chrome.tabs.executeScript(tabId, {code: `measureitChoices = '${JSON.stringify(choices)}';`});
+    chrome.tabs.executeScript(tabId, {file: 'cs.js'});
+  });
+}
+
+chrome.browserAction.onClicked.addListener(tab => {
+  execCs(tab.Id);
 });
 
 chrome.commands.onCommand.addListener(command => {
   if(command === 'open-measure-it') {
     try{
-      browser.tabs.query({
+      chrome.tabs.query({
         active: true,
         currentWindow: true
       }).then(tab => {
         const { id } = tab[0];
-        browser.tabs.executeScript(id, {file: 'cs.js'});
+        execCs(id);
       })
     } catch(e){}
   }
