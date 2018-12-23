@@ -19,7 +19,7 @@
 	    "default_title": "Measure-it"
 	},
 	"background": {
-		"scripts": ["bg.js"]
+		"scripts": ["polyfill.js", "bg.js"]
 	},
 	"options_ui": {
 		"page": "options.html",

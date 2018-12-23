@@ -1,9 +1,9 @@
 const saveData = (key, val) => {
-	browser.storage.local.get()
+	localStore.get('choices')
 		.then((res = {}) => {
 			const { choices } = res;
 			choices[key] = val;
-			browser.storage.local.set({ choices })
+			localStore.set({ choices })
 		});
 }
 
@@ -36,7 +36,7 @@ const setVal = (key, val, saveToo = true) => {
 	}
 }
 
-browser.storage.local.get()
+localStore.get('choices')
 	.then((res = {}) => {
 		const { choices = {} } = res;
 		setVal('background', choices.background, false);
