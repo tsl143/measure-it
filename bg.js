@@ -20,17 +20,3 @@ const execCs = tabId => {
 chrome.browserAction.onClicked.addListener(tab => {
   execCs(tab.Id);
 });
-
-chrome.commands.onCommand.addListener(command => {
-  if(command === 'open-measure-it') {
-    try{
-      chrome.tabs.query({
-        active: true,
-        currentWindow: true
-      }).then(tab => {
-        const { id } = tab[0];
-        execCs(id);
-      })
-    } catch(e){}
-  }
-});

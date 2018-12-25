@@ -27,11 +27,11 @@
 	},
 	"permissions": ["activeTab", "storage"],
 	"commands": {
-		"open-measure-it": {
+		"_execute_browser_action": {
 		  	"suggested_key": {
-				"default": "Alt+Shift+M"
-		  	},
-		  	"description": "Open MeasureIt"
+				"default": "Alt+Shift+M",
+				"mac": "Command+Shift+O"
+			}
 		}
 	}
 }
