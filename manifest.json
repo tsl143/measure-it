@@ -2,7 +2,7 @@
 	"manifest_version": 2,
 	"name": "Measure-it",
 	"description": "Draw a ruler across any webpage to check the width, height, or alignment of page elements in pixels.",
-	"version": "2.1.0",
+	"version": "2.1.1",
 	"applications": {
 		"gecko": {
 			"id": "{79b2e4de-8fb4-4ccc-b9f6-362ac2fb74b2}"
