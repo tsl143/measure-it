@@ -125,6 +125,31 @@
         manipulators.upperLabel.textContent = "";
         manipulators.lowerLabel.textContent = "";    
       }
+
+      const screenWidth = window.innerWidth;
+      // move bottom label inside if no space in left
+      if (x1 < 37 || x2 < 37) {
+        manipulators.lowerLabel.style.left = 0;
+        if (width < 40) manipulators.lowerLabel.style.bottom = "-21px";
+      } else {
+        manipulators.lowerLabel.style.left = '-37px';
+        manipulators.lowerLabel.style.bottom = 0;
+      }
+
+      // move upper label inside if no space in right
+      if ((screenWidth - x1) < 40 || (screenWidth - x2) < 40) {
+        manipulators.upperLabel.style.right = 0;
+        if (width < 40) manipulators.upperLabel.style.top = "-21px";
+      } else {
+        manipulators.upperLabel.style.right = '-37px';
+        manipulators.upperLabel.style.top = 0;
+      }
+
+      // ensure no label is vertically away if enough width
+      if(width >= 40){
+        manipulators.upperLabel.style.top = 0;
+        manipulators.lowerLabel.style.bottom = 0;
+      }
     },
 
     mDown: (e) => {
